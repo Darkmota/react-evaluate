@@ -1,0 +1,12 @@
+type Teacher {
+    name: String!
+    id: String!
+    saltyPassword: String!
+    salt: String!
+    classId: [String]
+    createTime: Date
+    isDeleted: Boolean!
+
+    class: [Class]
+    homeworkResponse: [HomeworkResponse]
+}

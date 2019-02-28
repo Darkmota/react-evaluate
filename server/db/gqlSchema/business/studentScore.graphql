@@ -1,0 +1,10 @@
+type StudentScore {
+    studentId: String!
+    homeworkResponseId: String!
+    score: Int!
+    createTime: Date!
+    isDeleted: Boolean!
+
+    student: Student
+    homeworkResponse: [HomeworkResponse]
+}

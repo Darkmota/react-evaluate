@@ -1,0 +1,11 @@
+type ClassmateScore {
+    classmateId: String!
+    createTime: Date
+    homeworkResponseId: String!
+    score: Int!
+    createTime: Date
+    isDeleted: Boolean!
+
+    classmate: [Student]
+    homeworkResponse: [HomeworkResponse]
+}

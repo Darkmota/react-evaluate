@@ -1,0 +1,12 @@
+type HomeworkRequest {
+    classId: [String]
+    teacherId: String
+    startTime: Date
+    endTime: Date
+    title: String!
+    content: String
+    isDeleted: Boolean!
+
+    teacher: Teacher!
+    class: [Class]
+}

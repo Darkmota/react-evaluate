@@ -1,0 +1,7 @@
+type Class {
+    name: String!
+    isDeleted: Boolean!
+
+    teacher: [Teacher]
+    student: [Student]
+}

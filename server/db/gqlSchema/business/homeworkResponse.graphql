@@ -1,0 +1,22 @@
+type HomeworkResponse {
+    homeworkRequestId: String!
+    studentId: String!
+    startTime: Date
+    endTime: Date
+    title: String!
+    content: String
+    pptFileExist: Boolean!
+    wordFileExist: Boolean!
+    videoFileExist: Boolean!
+    isCommited: Boolean!
+    studentScoreId: String
+    teacherScoreId: String
+    classmateScoreId: [String]
+    createTime: Date!
+    isDeleted: Boolean!
+
+    student: [Student]
+    studentScore: StudentScore
+    teacherScore: TeacherScore
+    classmateScore: [ClassmateScore]
+}

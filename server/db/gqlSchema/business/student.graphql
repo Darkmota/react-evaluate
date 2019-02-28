@@ -1,0 +1,11 @@
+type Student {
+    classId: String!
+    name: String!
+    id: String!
+    saltyPassword: String!
+    salt: String!
+    isDeleted: Boolean!
+
+    student: [Student]
+    homeworkResponse: [HomeworkResponse]
+}
