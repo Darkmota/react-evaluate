@@ -25,7 +25,7 @@ function getClientIp (req) {
 
 const start = async () => {
   try {
-    await MongoClient.connect('mongodb://127.0.0.1/evaluate', { useNewUrlParser: true })
+    await MongoClient.connect('mongodb://127.0.0.1/evaluation', { useNewUrlParser: true })
 
     const typeDefs = [
       requireGraphQLFile('./db/gqlSchema/std/scalar'),

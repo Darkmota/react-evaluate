@@ -8,10 +8,10 @@ const newSchema = new Schema({
     classmateProportion: Number,
     teacherProportion: Number,
   },
-  evaluateWeight: [{
+  evaluationWeight: [{
     name: String,
     score: Number,
-    subEvaluateWeight: [{
+    subEvaluationWeight: [{
       name: String,
       score: Number
     }]
@@ -20,4 +20,4 @@ const newSchema = new Schema({
   isDeleted: { type: Boolean, default: false }
 })
 
-module.exports = mongoose.model('evaluateSetting', newSchema, 'evaluateSetting')
+module.exports = mongoose.model('evaluationSetting', newSchema, 'evaluationSetting')

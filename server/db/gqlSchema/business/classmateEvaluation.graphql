@@ -1,10 +1,10 @@
-type StudentEvaluate {
-    studentId: String!
+type ClassmateEvaluation {
+    classmateId: String!
     homeworkResponseId: String!
     score: Int!
-    createTime: Date!
+    createTime: Date
     isDeleted: Boolean!
 
-    student: Student
+    classmate: [Student]
     homeworkResponse: [HomeworkResponse]
 }

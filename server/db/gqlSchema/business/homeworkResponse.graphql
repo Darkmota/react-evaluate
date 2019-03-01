@@ -6,15 +6,15 @@ type HomeworkResponse {
     wordFileExist: Boolean!
     videoFileExist: Boolean!
     isSubmited: Boolean!
-    studentEvaluateId: [String]
-    teacherEvaluateId: [String]
-    classmateEvaluateId: [String]
+    studentEvaluationId: [String]
+    teacherEvaluationId: [String]
+    classmateEvaluationId: [String]
     createTime: Date!
     submitTime: Date
     isDeleted: Boolean!
 
     student: [Student]
-    studentEvaluate: StudentEvaluate
-    teacherEvaluate: TeacherEvaluate
-    classmateEvaluate: [ClassmateEvaluate]
+    studentEvaluation: StudentEvaluation
+    teacherEvaluation: TeacherEvaluation
+    classmateEvaluation: [ClassmateEvaluation]
 }

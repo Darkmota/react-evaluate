@@ -9,13 +9,13 @@ const newSchema = new Schema({
   pptFileExist: { type: Boolean, default: false },
   wordFileExist: { type: Boolean, default: false },
   videoFileExist: { type: Boolean, default: false },
-  studentEvaluateId: [ObjectId],
-  teacherEvaluateId: [ObjectId],
-  classmateEvaluateId: [ObjectId],
+  studentEvaluationId: [ObjectId],
+  teacherEvaluationId: [ObjectId],
+  classmateEvaluationId: [ObjectId],
   isSubmited: { type: Boolean, default: false },
   submitTime: Date,
   createTime: { type: Date, default: Date.now },
   isDeleted: { type: Boolean, default: false }
 })
 
-module.exports = mongoose.model('classmateEvaluate', newSchema, 'classmateEvaluate')
+module.exports = mongoose.model('classmateEvaluation', newSchema, 'classmateEvaluation')

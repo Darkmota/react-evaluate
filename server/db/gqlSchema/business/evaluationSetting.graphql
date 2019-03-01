@@ -1,0 +1,25 @@
+type EvaluationSetting {
+    name: String!
+    scoreProportion: EvaluationProportion
+    evaluationWeight: [MainEvaluationWeight]
+    
+    createTime: Date
+    isDeleted: Boolean
+}
+
+type EvaluationProportion {
+    studentProportion: Int!
+    classmateProportion: Int!
+    teacherProportion: Int!
+}
+
+type MainEvaluationWeight {
+    name: String!
+    score: Int!
+    subEvaluationWeight: [SubEvaluationWeight]
+}
+
+type SubEvaluationWeight {
+    name: String!
+    score: Int!
+}

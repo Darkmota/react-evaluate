@@ -10,4 +10,4 @@ const newSchema = new Schema({
   isDeleted: { type: Boolean, default: false }
 })
 
-module.exports = mongoose.model('classmateEvaluate', newSchema, 'classmateEvaluate')
+module.exports = mongoose.model('classmateEvaluation', newSchema, 'classmateEvaluation')
