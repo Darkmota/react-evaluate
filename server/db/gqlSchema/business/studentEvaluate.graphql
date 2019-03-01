@@ -1,4 +1,4 @@
-type StudentScore {
+type StudentEvaluate {
     studentId: String!
     homeworkResponseId: String!
     score: Int!

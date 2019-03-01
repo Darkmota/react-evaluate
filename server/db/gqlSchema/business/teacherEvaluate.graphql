@@ -1,6 +1,5 @@
-type ClassmateScore {
-    classmateId: String!
-    createTime: Date
+type TeacherEvaluate {
+    teacherId: String!
     homeworkResponseId: String!
     score: Int!
     createTime: Date

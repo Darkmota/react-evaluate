@@ -1,0 +1,25 @@
+type EvaluateSetting {
+    name: String!
+    scoreProportion: EvaluateProportion
+    evaluateWeight: [MainEvaluateWeight]
+    
+    createTime: Date
+    isDeleted: Boolean
+}
+
+type EvaluateProportion {
+    studentProportion: Int!
+    classmateProportion: Int!
+    teacherProportion: Int!
+}
+
+type MainEvaluateWeight {
+    name: String!
+    score: Int!
+    subEvaluateWeight: [SubEvaluateWeight]
+}
+
+type SubEvaluateWeight {
+    name: String!
+    score: Int!
+}

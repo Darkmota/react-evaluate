@@ -1,7 +1,8 @@
 type Class {
     name: String!
+    studentId: [String]
+    createTime: Date
     isDeleted: Boolean!
 
-    teacher: [Teacher]
     student: [Student]
 }

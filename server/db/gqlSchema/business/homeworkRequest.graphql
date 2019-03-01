@@ -5,6 +5,7 @@ type HomeworkRequest {
     endTime: Date
     title: String!
     content: String
+    createTime: Date!
     isDeleted: Boolean!
 
     teacher: Teacher!
