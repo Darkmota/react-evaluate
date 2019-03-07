@@ -1,5 +1,6 @@
 type HomeworkResponse {
     homeworkRequestId: String!
+    teacherId: String!
     studentId: String!
     title: String!
     pptFileExist: Boolean!

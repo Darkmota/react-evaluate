@@ -1,8 +1,8 @@
 module.exports = {
-  jwt_secret: Buffer.from('abc869904047bfe77005739bba', 'hex'),
-  db_address: 'mongodb://expressroot:rootexpress@104.192.83.172/express',
+  jwt_secret: Buffer.from('aaa869904047bfe77005739bbb', 'hex'),
+  db_address: '',
   local_test: true,
-  local_address: 'mongodb://127.0.0.1/gugu',
+  local_address: 'mongodb://127.0.0.1/evaluation',
   fileAESKey: Buffer.from([
     72, 46, 52, 123,
     14, 67, 241, 129,

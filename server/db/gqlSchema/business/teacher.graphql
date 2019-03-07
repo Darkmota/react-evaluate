@@ -1,4 +1,5 @@
 type Teacher {
+    _id: String!
     name: String!
     id: String!
     saltyPassword: String!

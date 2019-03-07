@@ -2,5 +2,8 @@
 更新
 """
 type Mutation {
-  
+  loginAsTeacher(id: String, password: String): Teacher
+  registerAsTeacher(id: String, password: String): Teacher
+  loginAsStudent(id: String, password: String): Student
+  registerAsStudent(id: String, password: String): Student
 }

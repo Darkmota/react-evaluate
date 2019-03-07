@@ -3,6 +3,10 @@
 """
 type Query {
   # Teachers
-  homework(limit: Int, skip: Int): [Homework]
+  homeworkResponse(limit: Int, skip: Int): [HomeworkResponse]
+
+  studentById(_id: String): Student
+
+  teacherById(_id: String): Teacher
   
 }

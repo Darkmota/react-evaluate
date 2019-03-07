@@ -3,10 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const router = express.Router()
 const multer = require('multer')
-const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path
-const ffmpeg = require('fluent-ffmpeg')
 const asyncMiddleware = require('../utils/asyncMiddleware').asyncMiddleware
-ffmpeg.setFfmpegPath(ffmpegPath)
 
 console.log('File save path:', path.join(__dirname, '../db/data/'))
 

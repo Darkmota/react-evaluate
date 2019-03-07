@@ -10,8 +10,8 @@ const asyncMiddleware = require('./utils/asyncMiddleware').asyncMiddleware
 const Auth = require('./utils/auth')
 const Token = require('./utils/token')
 const Settings = require('./config/settings')
-const User = require('./db/schema/user')
-const Calculator = require('./utils/calculator')
+const Student = require('./db/schema/student')
+const Teacher = require('./db/schema/teacher')
 
 const {ApolloServer} = require('apollo-server-express')
 const app = express()
@@ -30,7 +30,16 @@ const start = async () => {
     const typeDefs = [
       requireGraphQLFile('./db/gqlSchema/std/scalar'),
       requireGraphQLFile('./db/gqlSchema/std/Query'),
-      requireGraphQLFile('./db/gqlSchema/std/Mutation')
+      requireGraphQLFile('./db/gqlSchema/std/Mutation'),
+      requireGraphQLFile('./db/gqlSchema/business/class'),
+      requireGraphQLFile('./db/gqlSchema/business/classmateEvaluation'),
+      requireGraphQLFile('./db/gqlSchema/business/evaluationSetting'),
+      requireGraphQLFile('./db/gqlSchema/business/homeworkRequest'),
+      requireGraphQLFile('./db/gqlSchema/business/homeworkResponse'),
+      requireGraphQLFile('./db/gqlSchema/business/student'),
+      requireGraphQLFile('./db/gqlSchema/business/studentEvaluation'),
+      requireGraphQLFile('./db/gqlSchema/business/teacher'),
+      requireGraphQLFile('./db/gqlSchema/business/teacherEvaluation')
     ]
 
     const typeResolvers = require('./db/gqlTypeResolvers')
@@ -50,11 +59,12 @@ const start = async () => {
       context: ({ req, res }) => {
         return {
           db: {
+            Teacher: Teacher,
+            Student: Student
           },
           settings: Settings,
           auth: Auth,
           token: Token,
-          calculator: Calculator,
           user: req.user,
           tokenErrorMessage: req.tokenErrorMessage,
           res: res
@@ -100,11 +110,13 @@ const start = async () => {
             req.tokenErrorMessage = 'Illegal token string'
             break
           case 1: // 有效但需续期
-            req.user = await User.findOne({username: status.payload.username})
+            req.user = await User.findOne({id: status.payload.id})
             res.setHeader('x-token', status.payload.token)
             break
           case 0: // 有效
-            req.user = await User.findOne({username: status.payload.username})
+            req.user = await User.findOne({id: status.payload.id})
+            break
+          default:
             break
         }
       }
