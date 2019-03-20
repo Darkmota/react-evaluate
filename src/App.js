@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, BrowserRouter, withRouter } from 'react-router-dom'
 import moment from 'moment'
 import "./App.css"
 
@@ -12,17 +12,11 @@ moment.locale('zh-cn')
 class App extends React.Component {
   render() {
     return (
-      <Switch>
-        <Route exact path="/">
+      <>
           <Login></Login>
-        </Route>
-        <Route path="/1">
-          <Page1></Page1>
-        </Route>
-        <Route path="/2">
-          <Page2></Page2>
-        </Route>
-      </Switch>
+          <Route path="/index" component={Page1}></Route>
+        
+      </>
     )
   }
 }
