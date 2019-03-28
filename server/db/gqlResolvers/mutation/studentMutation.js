@@ -4,7 +4,7 @@ module.exports = {
        id: id
     })
     if (student.saltyPassword === auth.encryptPassword(password, student.salt)) {
-      res.setHeader('x-token', token.encode({
+      res.setHeader('set-token', token.encode({
         id: student.id,
         expires_in: Date.now() + 3600000
       }))
