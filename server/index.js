@@ -83,14 +83,16 @@ const start = async () => {
     app.all('*', urlencodedParser, asyncMiddleware(async (req, res, next) => {
       console.log('URL: ' + req.url)
       console.log('IPv4: ' + getClientIp(req).split(':')[3])
+      /*
       res.header('Access-Control-Allow-Origin', '*')
       res.header('Access-Control-Allow-Headers', '*')
       res.header('Access-Control-Allow-Methods', 'POST,GET,OPTIONS')
       res.header('X-Powered-By', ' 3.2.1')
       res.header('Content-Type', 'application/jsoncharset=utf-8')
+      */
       if (req.method.toLocaleLowerCase() === 'options') {
         res.status(200)
-        return res.json({}) // 直接返回空数据，结束此次请求
+        return res.json({}) // 对于options直接返回空数据，结束此次请求
       }
 
       let status = false
