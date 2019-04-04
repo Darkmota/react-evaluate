@@ -1,3 +1,7 @@
+body {
+    background: #ddd;
+}
+
 #components-form-demo-normal-login .login-form {
     max-width: 300px;
 }
@@ -8,28 +12,42 @@
     width: 100%;
 }
 .login-container {
-    width: 100%;
-    height: calc(100% - 300px);
-    position: fixed;
     top: 300px;
+    width: 900px;
+    height: 400px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    background-color: #e8e8e8;
 }
 .login-form-depressed-button {
     display: flex;
     flex-direction: row-reverse;
 }
-.login-form-image {
+
+.login-form-img {
     margin: auto;
+    overflow: hidden;
+    width: 700px;
 }
+
+.login-form-content {
+    width: 400px;
+    height: 100%;
+}
+
 .login-form-title-border {
     padding: 10px;
-    background-color: #bbf;
+    margin: 0 -10px 0 -10px;
+    background-color: #bbb;
 }
+
 .login-form-title {
+    box-sizing: border-box;
     text-align: center;
 }
-.login-container-outer {
-    background-color: #fff;
-}
-.login-container-inner {
-    background-color: #ddf;
+
+.login-form {
+    text-align: center;
+    padding: 0 10px;
 }
