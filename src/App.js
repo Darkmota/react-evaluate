@@ -7,14 +7,13 @@ import Index from './views/Index'
 import Page2 from './views/Page2'
 
 import { createStore } from 'redux'
-const store = createStore()
 class App extends React.Component {
   render() {
     return (
-      <>
+      <BrowserRouter>
         <Route exact path="/" component={Login}></Route>
-        <Route exact path="/index" component={Index}></Route>
-      </>
+        <Route path="/index" component={Index}></Route>
+      </BrowserRouter>
     )
   }
 }

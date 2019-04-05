@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { saveUser } from '../actions'
-import { Link, Redirect, IndexRedirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Layout, message, div, Col, Card, Form, Icon, Input, Button, Checkbox} from 'antd'
 import IO from '../utils/Mutation'
 import './Login.css'
@@ -14,7 +14,6 @@ class NormalLogin extends React.Component {
       id: '',
       password: ''
     }
-    console.log(this.state)
   }
 
   handleSubmit = (e) => {
@@ -23,7 +22,7 @@ class NormalLogin extends React.Component {
       if (!err) {
         console.log('Received values of form: ', values);
       }
-      this.doLogin(values)
+      this.props.doLogin(values, this)
       //let res = await IO.loginAsTeacher(this.values.id, this.values.password)
       //console.log(res)
     });
@@ -47,14 +46,14 @@ class NormalLogin extends React.Component {
               {getFieldDecorator('id', {
                 rules: [{ required: true, message: '请输入账号!' }],
               })(
-                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入账号" />
+                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入账号(t)" />
               )}
             </Form.Item>
             <Form.Item>
               {getFieldDecorator('password', {
                 rules: [{ required: true, message: '请输入密码！' }],
               })(
-                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="请输入密码" />
+                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="请输入密码(t)" />
               )}
             </Form.Item>
             <Form.Item>
@@ -86,17 +85,27 @@ const mapStateToProps = state => ({
 })
 
 const mapStateToDispatch = dispatch => ({
-  doLogin: (e) => {
-    message.info(JSON.stringify(e))
-    dispatch(saveUser({
-      isLogin: true,
-      user: {
-        username: 'admin'
+  doLogin: async (e, ctx) => {
+    try {
+      let res = await IO.loginAsTeacher(e.id, e.password)
+      if (res.data.errors) {
+        message.error(res.data.errors[0].message)
+      } else {
+        dispatch(saveUser({
+          isLogin: true,
+          user: {
+            username: e.id,
+            role: 'teacher'
+          }
+        }))
+        ctx.props.history.push('/index')
       }
-    }))
+    } catch (e) {
+      message.error(e)
+    }
   }
 })
 
 const Login = Form.create({ name: 'login' })(NormalLogin)
 
-export default connect(mapStateToProps, mapStateToDispatch)(Login)
+export default withRouter(connect(mapStateToProps, mapStateToDispatch)(Login))

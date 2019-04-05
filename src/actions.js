@@ -5,4 +5,3 @@ export const saveUser = user => ({
     type: LOGIN_SUCCEED,
     user
   })
-  

@@ -3,6 +3,9 @@ module.exports = {
     const teacher = await db.Teacher.findOne({
       id: id
     })
+    if (teacher === null) {
+      throw new Error('教师不存在！')
+    }
     if (teacher.saltyPassword === auth.encryptPassword(password, teacher.salt)) {
       res.setHeader('set-token', token.encode({
         id: teacher.id,
