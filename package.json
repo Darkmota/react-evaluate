@@ -11,8 +11,10 @@
     "mongodb": "^3.2.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.5",
+    "redux": "^4.0.1",
     "require-graphql-file": "^1.0.1",
     "styled-jsx": "^3.2.1"
   },

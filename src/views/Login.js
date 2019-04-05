@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { saveUser } from '../actions'
 import { Link, Redirect, IndexRedirect } from 'react-router-dom'
 import { Layout, message, div, Col, Card, Form, Icon, Input, Button, Checkbox} from 'antd'
 import IO from '../utils/Mutation'
@@ -21,7 +23,9 @@ class NormalLogin extends React.Component {
       if (!err) {
         console.log('Received values of form: ', values);
       }
-      await IO.loginAsTeacher(this.state.id, this.state.password)
+      this.doLogin(values)
+      //let res = await IO.loginAsTeacher(this.values.id, this.values.password)
+      //console.log(res)
     });
   }
 
@@ -76,6 +80,23 @@ class NormalLogin extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLogin: state.isLogin,
+  user: state.user
+})
+
+const mapStateToDispatch = dispatch => ({
+  doLogin: (e) => {
+    message.info(JSON.stringify(e))
+    dispatch(saveUser({
+      isLogin: true,
+      user: {
+        username: 'admin'
+      }
+    }))
+  }
+})
+
 const Login = Form.create({ name: 'login' })(NormalLogin)
 
-export default Login
+export default connect(mapStateToProps, mapStateToDispatch)(Login)

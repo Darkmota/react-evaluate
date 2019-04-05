@@ -44,6 +44,7 @@ body {
 
 .login-form-title {
     box-sizing: border-box;
+    padding-top: 10px;
     text-align: center;
 }
 
