@@ -2,6 +2,7 @@ type Teacher {
     _id: String!
     name: String!
     id: String!
+    avatarExist: Boolean
     saltyPassword: String!
     salt: String!
     createTime: Date

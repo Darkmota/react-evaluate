@@ -1,7 +1,8 @@
 module.exports = {
   loginAsTeacher: async (root, { id, password }, { db, auth, res, token }) => {
-    const teacher = await db.Teacher.findOne({
-      id: id
+    const teacher = await db.User.findOne({
+      id: id,
+      isTeacher: true
     })
     if (teacher === null) {
       throw new Error('教师不存在！')
@@ -18,7 +19,10 @@ module.exports = {
   },
 
   registerAsTeacher: async (root, { id, password }, { db, auth, token, res }) => {
-    const teacher = await db.Teacher.findOne({ id: id })
+    const teacher = await db.User.findOne({
+      id: id,
+      isTeacher: true
+    })
     if (teacher !== null) {
       throw new Error('用户已存在')
     } else {
@@ -29,7 +33,8 @@ module.exports = {
         throw new Error('密码长度不符')
       }
       let salt = auth.generateRandomString(8)
-      let newTeacherRes = await db.Teacher.create({
+      let newTeacherRes = await db.User.create({
+        isTeacher: true,
         id: id,
         saltyPassword: auth.encryptPassword(password, salt),
         salt: salt

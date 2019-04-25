@@ -3,6 +3,7 @@ type Student {
     classId: String!
     name: String!
     id: String!
+    avatarExist: Boolean
     saltyPassword: String!
     salt: String!
     isDeleted: Boolean!

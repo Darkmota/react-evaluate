@@ -4,6 +4,7 @@ const ObjectId = Schema.Types.ObjectId
 
 const newSchema = new Schema({
   id: String,
+  isTeacher: Boolean,
   classId: ObjectId,
   saltyPassword: String,
   salt: String,
@@ -11,4 +12,4 @@ const newSchema = new Schema({
   isDeleted: { type: Boolean, default: false }
 })
 
-module.exports = mongoose.model('student', newSchema, 'student')
+module.exports = mongoose.model('user', newSchema, 'user')

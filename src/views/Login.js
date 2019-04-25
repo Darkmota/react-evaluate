@@ -46,14 +46,14 @@ class NormalLogin extends React.Component {
               {getFieldDecorator('id', {
                 rules: [{ required: true, message: '请输入账号!' }],
               })(
-                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入账号(t)" />
+                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入账号(123)" />
               )}
             </Form.Item>
             <Form.Item>
               {getFieldDecorator('password', {
                 rules: [{ required: true, message: '请输入密码！' }],
               })(
-                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="请输入密码(t)" />
+                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="请输入密码(123)" />
               )}
             </Form.Item>
             <Form.Item>
@@ -93,10 +93,12 @@ const mapStateToDispatch = dispatch => ({
       } else {
         dispatch(saveUser({
           isLogin: true,
+          _id: res.data.data.loginAsTeacher._id,
           user: {
-            username: e.id,
+            id: e.id,
             role: 'teacher'
-          }
+          },
+          token: res.headers['set-token']
         }))
         ctx.props.history.push('/index')
       }

@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Link } from 'react-router-dom'
 import './Index.css'
-import NewHomework from './NewHomework';
-import SearchHomework from './SearchHomework';
+import NewHomework from './NewHomework'
+import SearchHomework from './SearchHomework'
+import Profile from './Profile'
 class Index extends React.Component {
   constructor (props) {
     super(props)
@@ -14,7 +15,8 @@ class Index extends React.Component {
   render () {
     const routes = [
       { name: '布置作业', route: 'newHomework' },
-      { name: '查询作业', route: 'searchHomework' }
+      { name: '查询作业', route: 'searchHomework' },
+      { name: '上传头像', route: 'profile' },
     ]
     return (
       <>
@@ -37,14 +39,11 @@ class Index extends React.Component {
             })}
           </div>
           <div className="content">
-            <div className="img">
-            </div>
-            <div className="intro">
-              <Route path="/index/newHomework" component={NewHomework}></Route>
-              <Route path="/index/searchHomework" component={SearchHomework}></Route>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
+            <Route path="/index/newHomework" component={NewHomework}></Route>
+            <Route path="/index/searchHomework" component={SearchHomework}></Route>
+            <Route path="/index/profile" component={Profile}></Route>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </div>
       </>

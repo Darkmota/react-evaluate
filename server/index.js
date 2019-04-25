@@ -10,8 +10,7 @@ const asyncMiddleware = require('./utils/asyncMiddleware').asyncMiddleware
 const Auth = require('./utils/auth')
 const Token = require('./utils/token')
 const Settings = require('./config/settings')
-const Student = require('./db/schema/student')
-const Teacher = require('./db/schema/teacher')
+const User = require('./db/schema/user')
 
 const {ApolloServer} = require('apollo-server-express')
 const app = express()
@@ -59,8 +58,7 @@ const start = async () => {
       context: ({ req, res }) => {
         return {
           db: {
-            Teacher: Teacher,
-            Student: Student
+            User: User
           },
           settings: Settings,
           auth: Auth,
@@ -113,7 +111,7 @@ const start = async () => {
             break
           case 1: // 有效但需续期
             req.user = await User.findOne({id: status.payload.id})
-            res.setHeader('x-token', status.payload.token)
+            res.setHeader('set-token', status.payload.token)
             break
           case 0: // 有效
             req.user = await User.findOne({id: status.payload.id})
