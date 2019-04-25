@@ -3,7 +3,7 @@ import Config from '../config/Config'
 
 const Mutation = {
   loginAsTeacher (id, password) {
-    return Axios.post(`${Config.serverBase}/graphql`, {
+    return Axios.post(`/graphql`, {
       operationName: null,
       query: `
         mutation($id: String, $password: String) {
@@ -23,7 +23,7 @@ const Mutation = {
   },
 
   registerAsTeacher (id, password) {
-    return Axios.post(`${Config.serverBase}/graphql`, {
+    return Axios.post(`/graphql`, {
       operationName: null,
       query: `
         mutation($id: String, $password: String) {
