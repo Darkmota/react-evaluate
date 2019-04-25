@@ -47,8 +47,11 @@ for (let name of [
 router.all('/*', asyncMiddleware(async (req, res, next) => {
   next()
 }))
-
 router.post('/avatar', upload.single('avatarFile'), asyncMiddleware(async (req, res, next) => {
+  // temp
+  req.user = {
+    _id: '5c80cd1166e177522c81dd73'
+  }
   console.log(req.file)
   let avatarFile = req.file
   try {

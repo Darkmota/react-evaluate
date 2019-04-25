@@ -87,7 +87,7 @@ const mapStateToDispatch = dispatch => ({
       formData.append('avatarFile', ctx.state.inputFileBlob, this)
       Axios.post('/upload/avatar', formData, config)
         .then((res) => {
-          message.info('更新头像成功！')
+          message.info('更新头像成功！重新登录即可查看效果')
           ctx.forceUpdate()
         })
         .catch((err) => {

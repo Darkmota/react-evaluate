@@ -92,7 +92,7 @@ const start = async () => {
         res.status(200)
         return res.json({}) // 对于options直接返回空数据，结束此次请求
       }
-
+      console.log(req.headers['x-token'])
       let status = false
       if (req.headers['x-token']) {
         status = Auth.checkStatus(req.headers['x-token'])
@@ -100,9 +100,10 @@ const start = async () => {
       if (req.query['token']) {
         status = Auth.checkStatus(req.query['token'])
       }
+      /*
       if (status) {
-        // console.log('checkStatus: ', status)
-        switch (0) {
+        console.log('checkStatus: ', status)
+        switch (status.code) {
           case -1: // 过期
             req.tokenErrorMessage = 'Expired token'
             break
@@ -120,6 +121,7 @@ const start = async () => {
             break
         }
       }
+      */
       next()
     }))
 
