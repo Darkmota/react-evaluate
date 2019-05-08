@@ -1,17 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Menu, Icon } from 'antd'
 import { withRouter, Route, Link } from 'react-router-dom'
 import './Index.css'
 import NewHomework from './NewHomework'
 import SearchHomework from './SearchHomework'
 import Profile from './Profile'
+import Sider from './Sider'
 class Index extends React.Component {
-  constructor (props) {
-    super(props)
-  }
   goRoute = (link) => {
     this.props.history.push(`/index/${link.route}`)
   }
+
+  componentWillMount () {
+    let token = localStorage.getItem('x-token')
+    if (!token) {
+      this.props.history.push('/')
+    }
+  }
+
   render () {
     const routes = [
       { name: '布置作业', route: 'newHomework' },
@@ -31,13 +38,7 @@ class Index extends React.Component {
         </div>
         <div className="divider"></div>
         <div className="container">
-          <div className="sidebar">
-            {routes.map((link) => {
-              return (
-                <div className="section" key={link.name} onClick={this.goRoute.bind(this, link)}>{link.name}</div>
-              )
-            })}
-          </div>
+          <Sider className="sidebar"></Sider>
           <div className="content">
             <Route path="/index/newHomework" component={NewHomework}></Route>
             <Route path="/index/searchHomework" component={SearchHomework}></Route>

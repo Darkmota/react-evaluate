@@ -32,6 +32,13 @@ class NormalLogin extends React.Component {
     this.setState({[type]: event.target.value})
   }
 
+  componentWillMount () {
+    let token = localStorage.getItem('x-token')
+    if (token) {
+      this.props.history.push('/index')
+    }
+  }
+
   render () {
     const { getFieldDecorator } = this.props.form
     return (

@@ -26,7 +26,7 @@ Axios.interceptors.response.use(
   res => {
     console.log(res)
     if (res.headers['set-token']) {
-      window.localStorage.setItem('x-token', res.headers['x-token'])
+      window.localStorage.setItem('x-token', res.headers['set-token'])
     }
     return res
   })

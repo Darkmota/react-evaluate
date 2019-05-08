@@ -81,10 +81,10 @@ const start = async () => {
     app.all('*', urlencodedParser, asyncMiddleware(async (req, res, next) => {
       console.log('URL: ' + req.url)
       console.log('IPv4: ' + getClientIp(req).split(':')[3])
-      /*
       res.header('Access-Control-Allow-Origin', '*')
       res.header('Access-Control-Allow-Headers', '*')
       res.header('Access-Control-Allow-Methods', 'POST,GET,OPTIONS')
+      /*
       res.header('X-Powered-By', ' 3.2.1')
       res.header('Content-Type', 'application/jsoncharset=utf-8')
       */
@@ -101,8 +101,8 @@ const start = async () => {
         status = Auth.checkStatus(req.query['token'])
       }
       if (status) {
-        // console.log('checkStatus: ', status)
-        switch (0) {
+        console.log('checkStatus: ', status)
+        switch (status.code) {
           case -1: // 过期
             req.tokenErrorMessage = 'Expired token'
             break
